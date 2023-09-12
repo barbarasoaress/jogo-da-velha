@@ -10,6 +10,13 @@ body {
     height: 100vh;
 }
 
+h1 {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+
+}
+
 .celula {
     width: 100px;
     height: 100px;

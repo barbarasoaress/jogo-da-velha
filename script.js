@@ -3,7 +3,7 @@ const celulas = document.querySelectorAll('.celula')
 const mensagem = document.getElementById('mensagem')
 const reiniciarBotao = document.getElementById('reiniciar')
 let jogadorAtual = 'X';
-let jogoAtual = true;
+let jogoAtivo = true;
 const vitoriaCombinacoes = [
     [0,1,2],
     [3,4,5],
@@ -19,27 +19,38 @@ let tabuleiroEstado = ['','','','','','','','',''];
 function verificarVitoria() {
     for (const combinacao of vitoriaCombinacoes) {
         const [a,b,c] = combinacao;
-        if (tabuleiroEstado[a] && tabuleiroEstado [a] === tabuleiroEstado[b] && tabuleiroEstado[a] === tabuleiroEstado[c])
+        if (tabuleiroEstado[a] && tabuleiroEstado [a] === tabuleiroEstado[b] && tabuleiroEstado[a] === tabuleiroEstado[c]) {
             jogoAtivo = false;
             celulas[a].classList.add('vencedor');
             celulas[b].classList.add('vencedor');
             celulas[c].classList.add('vencedor');
+
             if  (tabuleiroEstado[a] === 'X') {
-            mensagem.textContent = 'Você ganhou!';
+                mensagem.textContent = 'Você ganhou!';
             } else {
                 mensagem.textContent = 'Ele ganhou!';
             }
             mensagem.classList.add('vitoria');
             reiniciarBotao.style.display = 'block';
             return;
+        }
+    }
+
+    if (!tabuleiroEstado.includes('')) {
+        jogoAtivo = false;
+        mensagem.textContent = 'Empate!';
+        mensagem.classList.add('empate'); 
+        tabuleiro.classList.add('empate');
+        reiniciarBotao.style.display = 'block';
+        return;
     }
 }
 
-function fazerJogadaHumana(celullaIndex) {
-    if (tabuleiroEstado[celulaIndex] === '' & jogoAtivo && jogadorAtual === 'X') {
-        tabuleiroEstado[celullaIndex] = jogadorAtual;
-        celulas[celullaIndex].textContent = jogadorAtual;
-        celulas[celullaIndex].classList.add('ocupada', 'X');
+function fazerJogadaHumana(celulaIndex) {
+    if (tabuleiroEstado[celulaIndex] === '' && jogoAtivo && jogadorAtual === 'X') {
+        tabuleiroEstado[celulaIndex] = jogadorAtual;
+        celulas[celulaIndex].textContent = jogadorAtual;
+        celulas[celulaIndex].classList.add('ocupada', 'X');
         verificarVitoria();
         jogadorAtual = 'O';
 
@@ -85,12 +96,12 @@ function reiniciarJogo() {
     }
 }
 
-celulas.forEach((celular, index) => {
+celulas.forEach((celula, index) => {
     celula.addEventListener('click', () => fazerJogadaHumana(index));
 });
 
 reiniciarBotao.addEventListener('click', reiniciarJogo);
 
-if (jogoAtual === 'O') {
+if (jogadorAtual === 'O') {
     fazerJogadaComputador();
 }
