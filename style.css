@@ -54,11 +54,11 @@ h1 {
 }
 
 .vencedor {
-    background-color: #a1e7a5;
+    background-color: #66bb6a;
 }
 
 .empate {
-    background-color: #000000;
+    background-color: #ef5350;
 }
 
 #reiniciar {
