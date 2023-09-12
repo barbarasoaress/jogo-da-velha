@@ -51,7 +51,7 @@ function fazerJogadaHumana(celullaIndex) {
 
 function fazerJogadaComputador() {
     if (jogadorAtual === 'O' && jogoAtivo) {
-        setTimeout() => {
+        setTimeout(() => {
             let jogadaAleatoria;
             do {
                 jogadaAleatoria = Math.floor(Math.random() * 9);               
@@ -66,4 +66,31 @@ function fazerJogadaComputador() {
     }
 }
 
-function
+function reiniciarJogo() {
+    tabuleiroEstado = ['', '', '', '', '', '', '', '', ''];
+    jogoAtivo = true;
+    mensagem.textContent = '';
+    tabuleiro.classList.remove('empate');
+
+    celulas.forEach(( celula) => {
+        celula.textContent = '';
+        celula.classList.remove('ocuada', 'vencedor', 'X', 'O');
+    });
+
+    reiniciarBotao.style.display = 'none';
+    jogadorAtual = 'X';
+
+    if (jogadorAtual === 'O') {
+        fazerJogadaComputador();
+    }
+}
+
+celulas.forEach((celular, index) => {
+    celula.addEventListener('click', () => fazerJogadaHumana(index));
+});
+
+reiniciarBotao.addEventListener('click', reiniciarJogo);
+
+if (jogoAtual === 'O') {
+    fazerJogadaComputador();
+}

@@ -30,3 +30,40 @@ body {
     gap: 5px;
 }
 
+.celula.X {
+    color: #6cbdb5;
+}
+
+.celula.O {
+    color: #e3dfba;
+}
+
+.vencedor {
+    background-color: #a1e7a5;
+}
+
+.empate {
+    background-color: #000000;
+}
+
+#reiniciar {
+    margin-top: none;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilizar o botão quando o mouse estiver sobre ele (hover) */
+#reiniciar:hover {
+    background-color: #45a049; /* Cor de fundo do botão no estado hover */
+}
+
+/* Estilo da mensagem de vitória */
+#mensagem {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
