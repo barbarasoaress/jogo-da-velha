@@ -11,7 +11,14 @@ body {
 }
 
 h1 {
+    color: #4b493b;
     margin-bottom: 10px;
+    border: #5fa79f;
+    border-style:solid;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #6cbdb5;
 }
 
 .celula {
