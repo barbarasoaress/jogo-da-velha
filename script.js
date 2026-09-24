@@ -85,7 +85,7 @@ function reiniciarJogo() {
 
     celulas.forEach(( celula) => {
         celula.textContent = '';
-        celula.classList.remove('ocuada', 'vencedor', 'X', 'O');
+        celula.classList.remove('ocupada', 'vencedor', 'X', 'O');
     });
 
     reiniciarBotao.style.display = 'none';
